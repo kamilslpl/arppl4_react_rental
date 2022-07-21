@@ -1,0 +1,18 @@
+:root{
+  --background:#FFE68A;
+  --header: #C19969;
+  --footer: #FEC760;
+  --body: #D59E58;
+  --button-color: grey;
+  --border-color: red
+}
+
+html{
+  background-color: var(--background);
+}
+
+.App {
+  text-align: center;
+}
+
+
