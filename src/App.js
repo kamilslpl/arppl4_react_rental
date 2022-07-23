@@ -2,13 +2,14 @@ import logo from './logo.svg';
 import classes from './App.module.css';
 import AppHeader from "./components/header/AppHeader";
 import AppFooter from "./components/footer/AppFooter";
+import CarList from "./components/body/CarList";
 import AppBody from "./components/body/AppBody";
 
 function App() {
   return (
     <div className={classes.App}>
         <AppHeader/>
-        <AppBody/>
+         <AppBody/>
         <AppFooter/>
 
     </div>

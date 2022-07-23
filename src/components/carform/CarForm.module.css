@@ -1,0 +1,16 @@
+.CarForm{
+
+}
+
+.FormItem{
+    padding: 2px 30px;
+}
+
+.FormItem div{
+    width: 100%;
+    background-color: var(--form-fields-color);
+}
+
+.FormItem div {
+    background-color: var(--form-fields-color);
+}
