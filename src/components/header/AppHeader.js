@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './AppHeader.module.css'
+import {Link} from "react-router-dom";
 
 const AppHeader = () => {
     return (
@@ -9,9 +10,18 @@ const AppHeader = () => {
             </div>
 
             <div className={classes.HeaderRight}>
+                <Link to={"/"}>
                 <div>Home</div>
+                </Link>
+
+                <Link to={"/cars"}>
                 <div>List</div>
+                </Link>
+
+                <Link to={"/rent"}>
                 <div>Form</div>
+                </Link>
+
             </div>
 
         </div>
