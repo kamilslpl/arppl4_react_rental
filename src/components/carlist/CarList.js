@@ -4,18 +4,15 @@ import {Button, Grid, IconButton} from "@mui/material"
 import connection from "../../axios/axios";
 import Card from "../card/Card";
 import Notification from "../notification/Notification";
-import {ControlPoint} from "@mui/icons-material";
 import {Link} from "react-router-dom";
-
-
+import {ControlPoint} from "@mui/icons-material";
 
 const CarList = () => {
     const [carList, setCarList] = useState([]);
     const [notification, setNotification] = useState(null);
 
-
     useEffect(() => {
-        connection.get("/api/car/list")        // fire and forget
+        connection.get("/api/car")        // fire and forget
             .then((response) => {
                 console.log("OK! ");
                 console.log(response);
@@ -28,53 +25,48 @@ const CarList = () => {
     }, []);
 
     const functionClickDelete = (paramId) => {
-        console.log("Wywołano usun parametr id:" + paramId)
-        connection.delete("/api/car/delete/" + paramId)        // fire and forget
+        console.log("Wywołano usuń - parametr id: " + paramId)
+
+        connection.delete("/api/car/" + paramId)
             .then((response) => {
-                setNotification("Car " + paramId + " has been deleted");
-                for (var i=0; i<carList.length; i++){
-                    if(carList[i].carId===paramId){
-                        carList.splice(i,1)
+                setNotification("Car has been deleted!")
+
+                // 1. carList - znajdz element o id: paramId
+                for (var i = 0; i < carList.length; i++) {
+                    if (carList[i].carId === paramId) {
+                        // 2. usun element o id: paramId z listy carList
+                        carList.splice(i, 1)
                     }
                 }
 
+                // 3. stwórz kopię listy carList
                 const carListCopy = [...carList];
-                setCarList(carListCopy);
 
+                // 4. zastąp obecną listę
+                setCarList(carListCopy);
             })
             .catch((errorResponse) => {
-                setNotification("Unable to remove car " + paramId + " " + errorResponse);
+                setNotification("Unable to remove car: " + errorResponse)
             });
     }
-    if (notification != null){
+
+    if (notification != null) {
         setTimeout(() => {
-            console.log("Timer zakonczyl prace!")
+            console.log("Timer zakończył pracę!")
             setNotification(null);
-        }, 5000)
+        }, 5000);
     }
 
-    console.log("Przeładowuje")
     return (
         <div className={classes.CarList}>
-            <Link to={"/cars/form"}>
-                <IconButton>
-                    <ControlPoint>
-
-                    </ControlPoint>
-                </IconButton>
-
-            </Link>
-
-            {/*<div className={classes.BodyContainer}>*/}
-            {/*    <div className={classes.ContainerHeader}>*/}
-            {/*        Cars for rent*/}
-            {/*    </div>*/}
-            {/*    <div className={classes.ContainerBody}>*/}
-
-            {/*    </div>*/}
-            {/*</div>*/}
-
-            <Card cardTitle={"Cars for rent"}>
+            <div className={classes.PlusButtonAlignedRight}>
+                <Link to={"/cars/form"}>
+                    <IconButton className={classes.PlusButtonIcon}>
+                        <ControlPoint/>
+                    </IconButton>
+                </Link>
+            </div>
+            <Card cardTitle={"Super Cars for Rent"}>
                 <Grid container direction={"row"}> {/*cała tabela*/}
                     <Grid container className={classes.TableHeader}> {/*wiersz nagłówka*/}
                         <Grid item xs={2}>Id</Grid>
@@ -88,7 +80,7 @@ const CarList = () => {
                         carList.map((elementListy) => {
                             return (
                                 <Grid key={elementListy.carId} container
-                                    className={classes.TableRow}> {/*wiersz nagłówka*/}
+                                      className={classes.TableRow}> {/*wiersz nagłówka*/}
                                     <Grid item xs={2}>{elementListy.carId}</Grid>
                                     <Grid item xs={2}>{elementListy.name}</Grid>
                                     <Grid item xs={2}>{elementListy.make}</Grid>
@@ -96,23 +88,18 @@ const CarList = () => {
                                     <Grid item xs={2}>{elementListy.carGearBox}</Grid>
                                     <Grid item xs={2}>
                                         <Button variant="contained" color="error" onClick={() => {
-                                            functionClickDelete(elementListy.carId)
+                                            functionClickDelete(elementListy.carId);
                                         }}>
                                             Delete
                                         </Button>
-
                                     </Grid>
                                 </Grid>
                             )
                         })
                     }
                 </Grid>
-
             </Card>
-
-            {
-                notification!=null ? (<Notification> {notification}</Notification>) : (<div></div>)
-            }
+            <Notification>{notification}</Notification>
         </div>
     );
 };

@@ -1,19 +1,27 @@
 :root{
-  --background:#FFE68A;
-  --header: #C19969;
-  --footer: #FEC760;
-  --body: #D59E58;
-  --button-color: grey;
-  --border-color: red;
-  --form-fields-color:white;
+  --background: #FFFFFF;
+  --button-color: #AC624F;
+  --header: #0077B6;
+  --footer: #0077B6;
+  --body: #48CAE4;
+  --card-color: #CAF0F8;
+  --border-color: #9F2B2B;
+  --form-fields-color: white;
+  --button-clear-color: #ff9800;
+  --button-submit-color: #03045E;
+  --font-color-button-clear: white;
+  --font-color-button-submit: white;
+  --button-add-color: inherit;
+
+  --width-size: 80vw;
+  --margin-size: 4px;
 }
 
-html{
-  background-color: var(--background);
+html {
+  background-color: var(--background); /* R (hex FF = 255) G (hex E6) B (hex 8A) */
 }
 
 .App {
   text-align: center;
 }
-
 

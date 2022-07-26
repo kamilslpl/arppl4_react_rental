@@ -1,7 +1,7 @@
 import React from 'react';
-import classes from "./AppBody.module.css";
+import classes from './AppBody.module.css';
 import {Route, Routes} from "react-router-dom";
-import CarList from "./CarList";
+import CarList from "../carlist/CarList";
 import CarForm from "../carform/CarForm";
 
 const AppBody = () => {
@@ -11,8 +11,7 @@ const AppBody = () => {
                 <Route path={"/"}></Route>
                 <Route path={"/cars"} element={<CarList/>}></Route>
                 <Route path={"/cars/form"} element={<CarForm/>}></Route>
-
-           </Routes>
+            </Routes>
         </div>
     );
 };

@@ -1,25 +1,12 @@
-.CarList{
+.CarList {
 
 }
-
-/*
-.BodyContainer {
-    background-color: var(--body);
-}
-.ContainerHeader {
-    display: flex;
-    border-bottom: 1px solid var(--border-color);
-}
-.ContainerBody {
-    margin: 4px;
-}
-*/
 
 .TableHeader {
     font-weight: bold;
 }
 
-.TableHeader div{
+.TableHeader div {
     border: 1px solid var(--border-color);
 }
 
@@ -27,7 +14,7 @@
     display: flex;
 }
 
-.TableRow div{
+.TableRow div {
     border: 1px solid var(--border-color);
     padding: 4px 0 4px 0;
     display: flex;
@@ -36,6 +23,16 @@
     align-items: center;
 }
 
-.TableRow div button{
-   width:90%;
+.TableRow div button {
+    width: 90%;
+}
+
+.PlusButtonAlignedRight{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.PlusButtonIcon{
+    background-color: var(--button-add-color) !important;
 }
